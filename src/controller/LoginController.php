@@ -23,13 +23,20 @@ class LoginController
 
     public function login()
     {
-        $resultado = $this->model->getUserWith($_POST["usuario"], $_POST["password"]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $usuario = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
+            $password = isset($_POST["password"]) ? $_POST["password"] : "";
 
-        if (sizeof($resultado) > 0) {
-            $_SESSION["usuario"] = $_POST["usuario"];
-            $this->redirectToIndex();
+            $resultado = $this->model->getUserWith($usuario, $password);
+
+            if (sizeof($resultado) > 0) {
+                $_SESSION["usuario"] = $_POST["usuario"];
+                $this->redirectToIndex();
+            } else {
+                $this->renderer->render("login", ["error" => "Usuario o clave incorrecta"]);
+            }
         } else {
-            $this->renderer->render("login", ["error" => "Usuario o clave incorrecta"]);
+            $this->renderer->render("login");
         }
     }
 
@@ -41,7 +48,7 @@ class LoginController
 
     public function redirectToIndex()
     {
-        header("Location: /");
+        header("Location:/pregUnlam/src/lobby/lobby");
         exit;
     }
 

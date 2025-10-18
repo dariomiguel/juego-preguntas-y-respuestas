@@ -10,9 +10,9 @@ class LoginModel
         $this->conexion = $conexion;
     }
 
-    public function getUserWith($user, $password)
+    public function getUserWith($mail, $contrasenia)
     {
-        $sql = "SELECT * FROM usuarios WHERE usuario = '$user' AND password = '$password'";
+        $sql = "SELECT * FROM usuario WHERE mail = '$mail' AND contrasenia = '$contrasenia'";
         $result = $this->conexion->query($sql);
         return $result ?? [];
     }
