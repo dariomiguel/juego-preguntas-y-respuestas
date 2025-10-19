@@ -1,0 +1,38 @@
+<div class="container overflow-hidden login-body">
+    <div class="row gx-5" style="align-items: center">
+        <div class="col">
+            <div>
+                <img src="/pregUnlam/imagenes/logoPregUnlam.png" class="card-img-top" alt="...">
+            </div>
+        </div>
+        <div class="col">
+            <div class="container-sm formLogin">
+                <form method="POST" action="/pregUnlam/login/login"
+                      class="w3-card w3-padding w3-light-grey w3-display-inline-block"
+                      style="min-width:300px">
+                    {{#error}}
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>
+                    {{/error}}
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="text" class="form-control" name="usuario" id="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasenia" class="form-label">Contraseña:</label>
+                        <input type="password" class="form-control" name="password" id="contrasenia">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Mantener sesion activa.</label>
+                    </div>
+                    <button type="submit" class="btn btn-light">Ingresar</button>
+                </form>
+                <hr>
+                <a class="btn btn-light btn-lg"
+                   href="/pregUnlam/login/registrar">¿No tenes cuenta? Registrate</a>
+            </div>
+        </div>
+    </div>
+</div>

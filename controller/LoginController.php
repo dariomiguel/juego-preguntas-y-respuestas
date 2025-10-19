@@ -48,7 +48,7 @@ class LoginController
 
     public function redirectToIndex()
     {
-        header("Location:/pregUnlam/src/lobby/lobby");
+        header("Location:/pregUnlam/lobby/lobby");
         exit;
     }
 
